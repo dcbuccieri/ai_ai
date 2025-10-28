@@ -1,0 +1,93 @@
+================================================================================
+SETUP INSTRUCTIONS - Stock Price Predictor
+================================================================================
+
+STEP 1: Create .env file
+------------------------
+The system needs a .env file with your API keys. Create a file named ".env" in the
+bot2 directory with the following content:
+
+POLYGON_API_KEY=your_actual_polygon_key_here
+NEWSAPI_KEY=your_actual_newsapi_key_here
+FRED_API_KEY=your_actual_fred_key_here
+REDDIT_CLIENT_ID=
+REDDIT_CLIENT_SECRET=
+REDDIT_USER_AGENT=stock_predictor_bot_v1.0
+
+STEP 2: Get FREE API Keys
+------------------------
+You need at least the Polygon API key to get started:
+
+1. Polygon.io (REQUIRED)
+   - Go to: https://polygon.io/
+   - Sign up for free
+   - Get your API key
+   - Free tier: 5 calls per minute (sufficient for testing)
+
+2. NewsAPI (RECOMMENDED)
+   - Go to: https://newsapi.org/
+   - Sign up for free developer account
+   - Get your API key
+   - Free tier: 100 requests per day
+
+3. FRED (OPTIONAL)
+   - Go to: https://fred.stlouisfed.org/docs/api/
+   - Create free account
+   - Request API key
+   - Free tier: Unlimited requests
+
+STEP 3: Install Dependencies
+---------------------------
+pip install -r requirements.txt
+
+Note: If ta-lib fails to install, that's OK - the system uses pure Python implementations.
+
+STEP 4: Test Your Setup
+-----------------------
+python test_system.py
+
+This will verify all components work. You should see:
+  [PASS] Configuration
+  [PASS] API Connections
+  [PASS] Data Download
+  [PASS] Feature Computation
+  [PASS] Data Preparation
+  [PASS] Model Building
+
+STEP 5: Start Using!
+------------------
+python data_downloader.py --ticker AAPL --days 7
+
+See QUICKSTART.md for full instructions.
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Error: "POLYGON_API_KEY not set"
+  Solution: Create .env file with your Polygon API key (see Step 1)
+
+Error: "No module named 'polygon'"
+  Solution: Run "pip install -r requirements.txt"
+
+Error: "ta-lib installation failed"
+  Solution: This is OK, system works without it using Python implementations
+
+Error: "Rate limit exceeded"
+  Solution: Free tier is 5 calls/min. Wait a minute and try again.
+
+================================================================================
+MINIMUM SETUP TO START
+================================================================================
+
+You only need:
+1. .env file with POLYGON_API_KEY
+2. Dependencies installed (pip install -r requirements.txt)
+
+That's it! You can start downloading data and training models.
+
+The other API keys (NewsAPI, FRED, Reddit, Google Trends) are optional
+and will use default values if not provided.
+
+================================================================================
+
